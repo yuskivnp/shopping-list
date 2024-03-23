@@ -49,7 +49,10 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script
+  setup
+  lang="ts"
+>
 import { ref, computed, onBeforeMount, watch } from 'vue'
 import type { IProduct } from '@/models'
 import ProductItem from '@/ProductItem.vue'
@@ -134,7 +137,10 @@ watch(
 )
 </script>
 
-<style scoped lang="scss">
+<style
+  scoped
+  lang="scss"
+>
 header {
   text-align: center;
 }
@@ -162,7 +168,6 @@ header {
     height: 40px;
     border-radius: 30%;
   }
-
 }
 
 .app {
@@ -179,15 +184,18 @@ header {
     overflow-x: hidden;
   }
 
+  .product {
+    border-radius: 15px;
+    margin: 20px;
+    padding: 15px 15px 15px 30px;
+  }
+
   &.dark {
     background-color: #3C0753;
     color: #ffd7f6;
 
     .product {
       border: 1px solid #030637;
-      border-radius: 15px;
-      margin: 20px;
-      padding: 15px 15px 15px 30px;
       box-shadow: 1px 1px 9px #ffd7f6;
       background: radial-gradient(#720455, #420231);
     }
@@ -199,9 +207,6 @@ header {
 
     .product {
       border: 1px solid #1f0016;
-      border-radius: 15px;
-      margin: 20px;
-      padding: 15px 15px 15px 30px;
       box-shadow: 1px 1px 9px #1f0016;
       background: radial-gradient(#FFDFDF, #AEDEFC);
     }
@@ -231,5 +236,33 @@ header {
 
 .list-leave-active {
   position: absolute;
+}
+
+@media only screen and (max-width: 600px) {
+  .app {
+    padding: 4px;
+
+    .header {
+      margin: 0 10px;
+    }
+
+    .product {
+      margin: 20px 10px;
+    }
+  }
+
+  .task-create {
+    display: flex;
+    margin: 0 10px;
+
+    &__input {
+      width: auto;
+      flex-grow: 1;
+    }
+
+    &__button {
+      width: 15%;
+    }
+  }
 }
 </style>

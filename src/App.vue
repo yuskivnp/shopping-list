@@ -76,13 +76,20 @@ function getWeight(product: IProduct) {
   return Number(!product.isFavorite) + Number(product.isDone) * 2
 }
 
-const sortedProducts = computed(() => [...productList.value].sort((a, b) => {
-  const weight = getWeight(a) - getWeight(b);
-  if (weight === 0) {
-    return a.description.localeCompare(b.description)
-  }
-  return weight;
-}))
+const sortedProducts = computed(() => {
+  const product = productName.value.toLowerCase();
+  const products = product
+    ? productList.value.filter(({ description }) => description.toLowerCase().includes(product))
+    : [...productList.value];
+  return products
+    .sort((a, b) => {
+      const weight = getWeight(a) - getWeight(b);
+      if (weight === 0) {
+        return a.description.localeCompare(b.description)
+      }
+      return weight;
+    })
+});
 
 function addProduct() {
   const description = trimmedName.value
